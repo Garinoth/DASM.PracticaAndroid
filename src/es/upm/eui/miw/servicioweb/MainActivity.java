@@ -19,6 +19,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
 	private static int CONSULTA = 1;
+	private static int INSERCION = 2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -146,9 +147,9 @@ public class MainActivity extends Activity {
 				if (numreg > 0) {
 					Toast.makeText(getBaseContext(), R.string.registroExistente, Toast.LENGTH_SHORT).show();
 				} else if (numreg == 0){
-//					Intent nextScreen = new Intent(MainActivity.this, ConsultaActivity.class);
-//					nextScreen.putExtra("registros", param);
-//					startActivityForResult(nextScreen, CONSULTA);
+					Intent nextScreen = new Intent(MainActivity.this, InsertarActivity.class);
+					nextScreen.putExtra("registro", param);
+					startActivityForResult(nextScreen, INSERCION);
 				}
 			} catch (JSONException e) {
 				e.printStackTrace();
