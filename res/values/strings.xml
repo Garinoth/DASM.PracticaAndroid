@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ServicioWeb</string>
+    <string name="dni">DNI</string>
+    <string name="titulo1">Operaciones Servicio Web</string>
+    <string name="titulo2">Consulta de Registros</string>
+    <string name="titulo3">Inserción de Registro</string>
+    <string name="titulo4">Modificación de Registro</string>
+    <string name="titulo5">Borrado de Registro</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="direccion">Dirección</string>
+    <string name="telefono">Teléfono</string>
+    <string name="equipo">Equipo</string>
+    <string name="title_activity_consulta">ConsultaActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="progress_title">Conectando con la base de datos</string>
+    <string name="registroNoEncontrado">Registro no existente</string>
+    <string name="base_url">http://demo.calamar.eui.upm.es/dasmapi/v1/miw37</string>
+    <string name="title_activity_agregar">AgregarActivity</string>
+    <string name="error_insercion">Debe introducir un DNI</string>
+    <string name="registroExistente">Registro Existente</string>
+
+</resources>
