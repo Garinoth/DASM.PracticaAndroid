@@ -91,7 +91,6 @@ public class MainActivity extends Activity {
 			pDialog.dismiss();
 			try {
 				JSONArray res = new JSONArray(param);
-				Log.d("ServicioWeb", res.getJSONObject(0).get("NUMREG").toString());
 				int numreg = res.getJSONObject(0).getInt("NUMREG");
 				if (numreg == 0) {
 					Toast.makeText(getBaseContext(), R.string.registroNoEncontrado, Toast.LENGTH_SHORT).show();
