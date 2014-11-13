@@ -81,6 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_editar"
+            android:onClick="modificar"
             android:src="@drawable/ic_editar" />
 
         <ImageButton
@@ -88,6 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_eliminar"
+            android:onClick="borrar"
             android:src="@drawable/ic_eliminar" />
 
     </LinearLayout>

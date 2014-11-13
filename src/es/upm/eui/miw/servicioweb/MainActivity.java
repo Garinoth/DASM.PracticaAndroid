@@ -20,6 +20,8 @@ public class MainActivity extends Activity {
 
 	private static int CONSULTA = 1;
 	private static int INSERCION = 2;
+	private static int BORRADO = 3;
+	private static int MODIFICACION = 4;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,24 @@ public class MainActivity extends Activity {
 			new insercionBD().execute(dni);
 		}
 	}
+	
+	public void borrar(View v) {
+		String dni = ((EditText)findViewById(R.id.editText1)).getText().toString();
+		if (dni.equals("")){
+			Toast.makeText(getBaseContext(), getString(R.string.error_insercion), Toast.LENGTH_SHORT).show();
+		} else {
+			new borradoBD().execute(dni);
+		}
+	}
+	
+	public void modificar(View v) {
+		String dni = ((EditText)findViewById(R.id.editText1)).getText().toString();
+		if (dni.equals("")){
+			Toast.makeText(getBaseContext(), getString(R.string.error_insercion), Toast.LENGTH_SHORT).show();
+		} else {
+			new modificacionBD().execute(dni);
+		}
+	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -48,7 +68,25 @@ public class MainActivity extends Activity {
 			if (resultCode == RESULT_CANCELED) {
 				mensaje = "Consulta finalizada";
 			}
-		}
+		} else if (requestCode == INSERCION) {
+			if (resultCode == RESULT_OK) {
+				mensaje = "Inserción finalizada";
+			} else if (resultCode == RESULT_CANCELED) {
+				mensaje = "Inserción cancelada";
+			}
+		} else if (requestCode == BORRADO) {
+			if (resultCode == RESULT_OK) {
+				mensaje = "Borrado finalizado";
+			} else if (resultCode == RESULT_CANCELED) {
+				mensaje = "Borrado cancelado";
+			}
+		} else if (requestCode == MODIFICACION) {
+			if (resultCode == RESULT_OK) {
+				mensaje = "Modificación finalizada";
+			} else if (resultCode == RESULT_CANCELED) {
+				mensaje = "Modificación cancelada";
+			}
+		}	
 		Toast.makeText(getBaseContext(), mensaje, Toast.LENGTH_SHORT).show();
 	}
 
@@ -106,6 +144,7 @@ public class MainActivity extends Activity {
 		}
 	}
 	
+	
 	private class insercionBD extends AsyncTask<String, Void, String> {
 
 		private ProgressDialog pDialog;
@@ -147,8 +186,110 @@ public class MainActivity extends Activity {
 					Toast.makeText(getBaseContext(), R.string.registroExistente, Toast.LENGTH_SHORT).show();
 				} else if (numreg == 0){
 					Intent nextScreen = new Intent(MainActivity.this, InsertarActivity.class);
-					nextScreen.putExtra("registro", param);
+					nextScreen.putExtra("dni", ((EditText)findViewById(R.id.editText1)).getText().toString());
 					startActivityForResult(nextScreen, INSERCION);
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			//Toast.makeText(getBaseContext(), param, Toast.LENGTH_SHORT).show();
+		}
+	}
+	
+	private class borradoBD extends AsyncTask<String, Void, String> {
+
+		private ProgressDialog pDialog;
+		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw37/fichas";
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(MainActivity.this);
+			pDialog.setMessage(getString(R.string.progress_title));
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+
+		@Override
+		protected String doInBackground(String... arg0) {
+			String respuesta = "";
+			try {
+				AndroidHttpClient httpclient = AndroidHttpClient.newInstance("AndroidHttpClient");
+				String url = URL +"/"+ arg0[0];
+				HttpGet httpget = new HttpGet(url);
+				HttpResponse response = httpclient.execute(httpget);
+				respuesta = EntityUtils.toString(response.getEntity());
+				httpclient.close();
+			} catch (Exception e) {
+				Log.e("ServicioWeb", e.toString());
+			}
+			return respuesta;
+		}
+
+		@Override
+		protected void onPostExecute(String param) {
+			pDialog.dismiss();
+			try {
+				JSONArray res = new JSONArray(param);
+				int numreg = res.getJSONObject(0).getInt("NUMREG");
+				if (numreg == 0) {
+					Toast.makeText(getBaseContext(), R.string.registroNoExistente, Toast.LENGTH_SHORT).show();
+				} else if (numreg == 1){
+					Intent nextScreen = new Intent(MainActivity.this, BorrarActivity.class);
+					nextScreen.putExtra("registro", param);
+					startActivityForResult(nextScreen, BORRADO);
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			//Toast.makeText(getBaseContext(), param, Toast.LENGTH_SHORT).show();
+		}
+	}
+	
+	private class modificacionBD extends AsyncTask<String, Void, String> {
+
+		private ProgressDialog pDialog;
+		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw37/fichas";
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(MainActivity.this);
+			pDialog.setMessage(getString(R.string.progress_title));
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+
+		@Override
+		protected String doInBackground(String... arg0) {
+			String respuesta = "";
+			try {
+				AndroidHttpClient httpclient = AndroidHttpClient.newInstance("AndroidHttpClient");
+				String url = URL +"/"+ arg0[0];
+				HttpGet httpget = new HttpGet(url);
+				HttpResponse response = httpclient.execute(httpget);
+				respuesta = EntityUtils.toString(response.getEntity());
+				httpclient.close();
+			} catch (Exception e) {
+				Log.e("ServicioWeb", e.toString());
+			}
+			return respuesta;
+		}
+
+		@Override
+		protected void onPostExecute(String param) {
+			pDialog.dismiss();
+			try {
+				JSONArray res = new JSONArray(param);
+				int numreg = res.getJSONObject(0).getInt("NUMREG");
+				if (numreg == 0) {
+					Toast.makeText(getBaseContext(), R.string.registroNoExistente, Toast.LENGTH_SHORT).show();
+				} else if (numreg == 1){
+					Intent nextScreen = new Intent(MainActivity.this, ModificarActivity.class);
+					nextScreen.putExtra("registro", param);
+					startActivityForResult(nextScreen, MODIFICACION);
 				}
 			} catch (JSONException e) {
 				e.printStackTrace();

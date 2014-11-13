@@ -32,6 +32,14 @@
             android:name=".InsertarActivity"
             android:label="@string/title_activity_agregar" >
         </activity>
+        <activity
+            android:name=".BorrarActivity"
+            android:label="@string/title_activity_borrar" >
+        </activity>
+        <activity
+            android:name=".ModificarActivity"
+            android:label="@string/title_activity_modificar" >
+        </activity>
     </application>
 
 </manifest>

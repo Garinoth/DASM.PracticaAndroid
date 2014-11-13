@@ -12,7 +12,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/titulo3"
+        android:text="@string/titulo4"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <LinearLayout
@@ -164,9 +164,9 @@
                 android:id="@+id/imageButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_add"
-                android:onClick="insertar"
-                android:src="@drawable/ic_add" />
+                android:background="@drawable/ic_editar"
+                android:onClick="modificar"
+                android:src="@drawable/ic_editar" />
 
         </LinearLayout>
     </LinearLayout>

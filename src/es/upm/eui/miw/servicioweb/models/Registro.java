@@ -21,6 +21,9 @@ public class Registro {
 		this.equipo = registroJSON.getString("Equipo");
 	}
 
+	public Registro() {
+	}
+
 	public String getDni() {
 		return dni;
 	}
@@ -69,5 +72,18 @@ public class Registro {
 		this.equipo = equipo;
 	}
 
-	
+	public JSONObject toJSON() {
+		JSONObject res = new JSONObject();
+		try {
+			res.put("DNI", this.dni);
+			res.put("Nombre", this.nombre);
+			res.put("Apellidos", this.apellidos);
+			res.put("Direccion", this.direccion);
+			res.put("Telefono", this.telefono);
+			res.put("Equipo", this.equipo);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
 }

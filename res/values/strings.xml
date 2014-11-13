@@ -21,5 +21,8 @@
     <string name="title_activity_agregar">AgregarActivity</string>
     <string name="error_insercion">Debe introducir un DNI</string>
     <string name="registroExistente">Registro Existente</string>
+    <string name="registroNoExistente">Registro no existente</string>
+    <string name="title_activity_borrar">BorrarActivity</string>
+    <string name="title_activity_modificar">ModificarActivity</string>
 
 </resources>

@@ -12,7 +12,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/titulo3"
+        android:text="@string/titulo5"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <LinearLayout
@@ -41,7 +41,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:enabled="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:hint="@string/dni"
@@ -67,7 +66,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:hint="@string/nombre" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -88,7 +90,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:hint="@string/apellidos" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -109,7 +114,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:hint="@string/direccion" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -130,7 +138,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:hint="@string/telefono" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -151,7 +162,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:hint="@string/equipo" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -164,9 +178,9 @@
                 android:id="@+id/imageButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_add"
-                android:onClick="insertar"
-                android:src="@drawable/ic_add" />
+                android:background="@drawable/ic_eliminar"
+                android:onClick="borrar"
+                android:src="@drawable/ic_eliminar" />
 
         </LinearLayout>
     </LinearLayout>
