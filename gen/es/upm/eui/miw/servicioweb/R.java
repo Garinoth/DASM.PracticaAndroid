@@ -29,6 +29,7 @@ public final class R {
         public static final int ic_previous=0x7f020008;
     }
     public static final class id {
+        public static final int BtnObtenerPreferencias=0x7f080014;
         public static final int EditText01=0x7f08000c;
         public static final int EditText02=0x7f08000a;
         public static final int EditText03=0x7f080008;

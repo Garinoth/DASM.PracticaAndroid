@@ -93,5 +93,12 @@
             android:src="@drawable/ic_eliminar" />
 
     </LinearLayout>
-
+<Button
+	    android:id="@+id/BtnObtenerPreferencias"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:onClick="consultarPreferencias"
+	    android:text="@string/dni" />
+    
 </LinearLayout>
